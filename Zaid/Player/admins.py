@@ -60,7 +60,7 @@ async def skip(client, m: Message):
     if len(m.command) < 2:
         op = await skip_current_song(chat_id)
         if op == 0:
-            await m.reply("❤️‍🔥 ماكو شي مشتغل حب")
+            await m.reply("❤️‍🔥مفيش حاجه شغاله")
         elif op == 1:
             await m.reply("✅ __الطابور تم مسحه__ **وتم تحكم.**\n\n**• بمغادرة المساعد الدردشة الصوتية**")
         elif op == 2:
@@ -68,7 +68,7 @@ async def skip(client, m: Message):
         else:
             await m.reply_photo(
                 photo=f"{IMG_3}",
-                caption=f"⏭ **🤼لك عاش ابشر تم التخطي .**\n\n❤️‍🔥 °→ **الاسم:** [{op[0]}]({op[1]})\n❤️‍🔥 → **الدردشة:** `{chat_id}`\n❤️‍🔥 → **طلب من الحلو:** {m.from_user.mention()}",
+                caption=f"⏭ **🤼تم التخطي .**\n\n❤️‍🔥 °→ **الاسم:** [{op[0]}]({op[1]})\n❤️‍🔥 → **الدردشة:** `{chat_id}`\n❤️‍🔥 → **طلب من الحلو:** {m.from_user.mention()}",
                 reply_markup=keyboard,
             )
     else:
@@ -90,7 +90,7 @@ async def skip(client, m: Message):
 
 
 @Client.on_message(
-    command(["ايقاف", f"كافي", "انهاء", f"دكافي", "اوكف"])
+    command(["ايقاف", f"كافي", "انهاء", f"دكافي", "اوكف", "ك"])
     & other_filters
 )
 @authorized_users_only
@@ -100,7 +100,7 @@ async def stop(client, m: Message):
         try:
             await call_py.leave_group_call(chat_id)
             clear_queue(chat_id)
-            await m.reply("✅ لك عاش ابشر تم الايقاف حب.")
+            await m.reply("✅ تم الايقاف بنجاح.")
         except Exception as e:
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
@@ -122,7 +122,7 @@ async def pause(client, m: Message):
         except Exception as e:
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
-        await m.reply("❌ **ماكو شي مشتغل دعبل**")
+        await m.reply("❌ **مفيش حاجه شغاله **")
 
 
 @Client.on_message(
@@ -140,7 +140,7 @@ async def resume(client, m: Message):
         except Exception as e:
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
-        await m.reply("❌ **ماكو شي مشتغل دعبل**")
+        await m.reply("❌ **مفيش حاجه شغاله**")
 
 
 @Client.on_message(
@@ -158,7 +158,7 @@ async def mute(client, m: Message):
         except Exception as e:
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
-        await m.reply("❌ **ماكو شي مشتغل دعبل**")
+        await m.reply("❌ **مفيش حاجه شغاله**")
 
 
 @Client.on_message(
@@ -176,7 +176,7 @@ async def unmute(client, m: Message):
         except Exception as e:
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
-        await m.reply("❌ **ماكو شي مشتغل دعبل**")
+        await m.reply("❌ **مفيش حاجه شغاله**")
 
 
 @Client.on_callback_query(filters.regex("cbpause"))
@@ -196,7 +196,7 @@ async def cbpause(_, query: CallbackQuery):
         except Exception as e:
             await query.edit_message_text(f"🚫 **error:**\n\n`{e}`", reply_markup=bcl)
     else:
-        await query.answer("❌ ماكو شي مشتغل", show_alert=True)
+        await query.answer("❌ مفيش حاجه شغاله", show_alert=True)
 
 
 @Client.on_callback_query(filters.regex("cbresume"))
@@ -216,7 +216,7 @@ async def cbresume(_, query: CallbackQuery):
         except Exception as e:
             await query.edit_message_text(f"🚫 **error:**\n\n`{e}`", reply_markup=bcl)
     else:
-        await query.answer("❌ ماكو شي مشتغل دعبل", show_alert=True)
+        await query.answer("مفيش حاجه شغاله", show_alert=True)
 
 
 @Client.on_callback_query(filters.regex("cbstop"))
@@ -235,7 +235,7 @@ async def cbstop(_, query: CallbackQuery):
         except Exception as e:
             await query.edit_message_text(f"🚫 **error:**\n\n`{e}`", reply_markup=bcl)
     else:
-        await query.answer("❌ ماكو شي مشتغل", show_alert=True)
+        await query.answer("❌مفيش حاجه شغاله", show_alert=True)
 
 
 @Client.on_callback_query(filters.regex("cbmute"))
@@ -294,4 +294,4 @@ async def change_volume(client, m: Message):
         except Exception as e:
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
-        await m.reply("❌ **ماكو شي مشتغل **")
+        await m.reply("❌ **مفيش حاجه شغاله**")
