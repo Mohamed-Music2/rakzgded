@@ -131,7 +131,7 @@ async def generate_cover(thumbnail, title, userid, ctitle):
 
 
     
-@Client.on_message(command(["تشغيل", f"شغل"]) & other_filters)
+@Client.on_message(command(["تشغيل", f"شغل", "ش", "/play"]) & other_filters)
 async def play(c: Client, m: Message):
     await m.delete()
     replied = m.reply_to_message
@@ -143,9 +143,9 @@ async def play(c: Client, m: Message):
                       InlineKeyboardButton("⏭️", "skip"),
                       InlineKeyboardButton("🔼", callback_data="cbresume"),
                   ],[
-                      InlineKeyboardButton(text="🥇 المطور ", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                      InlineKeyboardButton(text="🥇 المطور ", url=f"https://t.me/lMl4ll"),
                   ],[
-                      InlineKeyboardButton("مسح.", callback_data="cls")],
+                      InlineKeyboardButton("مسح", callback_data="cls")],
                   ]
              )
     if m.sender_chat:
@@ -162,16 +162,16 @@ async def play(c: Client, m: Message):
         return
     if not a.can_manage_voice_chats:
         await m.reply_text(
-            "شلون اشغل واني معندي صلاحية :" + "\n\n» ❤️‍🔥 __دردشة الفيديو__"
+            "ازي اشغل واني معندي صلاحية :" + "\n\n» ❤️‍🔥 __دردشة الفيديو__"
         )
         return
     if not a.can_delete_messages:
         await m.reply_text(
-            "شلون اشغل واني معندي صلاحية:" + "\n\n» ❤️‍🔥 __حذف رسائل__"
+            "ازي اشغل واني معندي صلاحية:" + "\n\n» ❤️‍🔥 __حذف رسائل__"
         )
         return
     if not a.can_invite_users:
-        await m.reply_text("شلون اشغل واني معندي صلاحية:" + "\n\n» ❤️‍🔥 __اضافة مستخدمين__")
+        await m.reply_text("ازي اشغل واني معندي صلاحية:" + "\n\n» ❤️‍🔥 __اضافة مستخدمين__")
         return
     try:
         ubot = (await user.get_me()).id
@@ -224,7 +224,7 @@ async def play(c: Client, m: Message):
                 await suhu.delete()
                 await m.reply_photo(
                     photo=f"{IMG_1}",
-                    caption=f"❤️‍🔥 → **أبشر يخوي حشغلها بعد هاذي »** `{pos}`\n\n❤️‍🔥 → **الاسم:** [{songname}]({link}) | `الاغنية`\n❤️‍🔥 → **الدردشة:** `{chat_id}`\n❤️‍🔥 → **طلب الحلو:** {m.from_user.mention()}",
+                    caption=f"❤️‍🔥 → **​​​​​تم الاضافه الي قائمه الانتظار»** `{pos}`\n\n❤️‍🔥 → **الاسم:** [{songname}]({link}) | `الاغنية`\n❤️‍🔥 → **الدردشة:** `{chat_id}`\n❤️‍🔥 → **طلب الحلو:** {m.from_user.mention()}",
                     reply_markup=keyboard,
                 )
             else:
@@ -241,7 +241,7 @@ async def play(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
                     photo=f"{IMG_2}",
-                    caption=f"❤️‍🔥 → **الاسم:** [{songname}]({link})\n❤️‍🔥 → **الدردشة:** `{chat_id}`\n❤️‍🔥 → **طلب الحلو:** {requester}\n❤️‍🔥 → **نوع التشغيل:** `اغنية`",
+                    caption=f"❤️‍🔥 → **الاسم:** [{songname}]({link})\n❤️‍🔥 → **الدردشة:** `{chat_id}`\n❤️‍🔥 → **طلب من:** {requester}\n❤️‍🔥 → **نوع التشغيل:** `اغنية`",
                     reply_markup=keyboard,
                 )
              except Exception as e:
@@ -252,7 +252,7 @@ async def play(c: Client, m: Message):
         if len(m.command) < 2:
          await m.reply_photo(
                      photo=f"{IMG_5}",
-                    caption="❤️‍🩹**اكتب .شغل او تشغيل بالرد على ملف صوتي او اعطاء شي للبحث**"
+                    caption="❤️‍🩹**اكتب شغل او تشغيل بالرد على ملف صوتي او اعطاء شي للبحث**"
                     ,
                       reply_markup=InlineKeyboardMarkup(
                     [
@@ -293,7 +293,7 @@ async def play(c: Client, m: Message):
                         )
                         await m.reply_photo(
                             photo=image,
-                            caption=f"👍🏻🔥 **أبشر عيني راح اشغلها بعد هاي »** `{pos}`\n\n❤️‍🔥→  **الاسم:** [{songname[:22]}]({url}) | `الاغنية`\n**❤️‍🔥 → المدة:** `{duration}`\n❤️‍🔥 → **طلب من الحب مالي:** {requester}",
+                            caption=f"👍🏻🔥 ** ​​​​​​​​​​تم الاضافه الي قائمه الانتظار »** `{pos}`\n\n❤️‍🔥→  **الاسم:** [{songname[:22]}]({url}) | `الاغنية`\n**❤️‍🔥 → المدة:** `{duration}`\n❤️‍🔥 → **طلب من  :** {requester}",
                             reply_markup=keyboard,
                         )
                     else:
@@ -313,7 +313,7 @@ async def play(c: Client, m: Message):
                             requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                             await m.reply_photo(
                                 photo=image,
-                                caption=f"❤️‍🔥 **→ الاسم :** [{songname[:22]}]({url})\n**❤️‍🔥 → المدة:** `{duration}`\n❤️‍🔥 →** طلب من الگي:** {requester}",
+                                caption=f"❤️‍🔥 **→ الاسم :** [{songname[:22]}]({url})\n**❤️‍🔥 → المدة:** `{duration}`\n❤️‍🔥 →** طلب من:** {requester}",
                                 reply_markup=keyboard,
                             )
                         except Exception as ep:
